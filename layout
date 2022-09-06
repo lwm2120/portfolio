@@ -1,5 +1,5 @@
 Luke McEldowney
-{links}
+{links, github}
 
 ---
 
@@ -31,9 +31,10 @@ Individual project page
 {breadcrumbs}   {view raw md}
 <hr>
 
-Manifest / description with use cases / pictures
+Manifest / history / description with use cases / pictures
 
 followed by...
+<hr?>
 
 readme from github rendered as html
 
@@ -44,13 +45,13 @@ Recent art (pictures, audio, etc.)
 { Max of 3, 0 <= x <= 3 }
 
 Date
-*TITLE*     description         length / size
+*TITLE*     description         thumbnail image
 
 Date
-*TITLE*     description         length / size
+*TITLE*     description         thumbnail image
 
 Date
-*TITLE*     description         length / size
+*TITLE*     description         thumbnail image
 
 More -> { art page }
 
@@ -58,7 +59,7 @@ More -> { art page }
 Art page
 
 Date
-*TITLE*     description         length / size
+*TITLE*     description         thumbnail image
 
 ...
 
@@ -67,10 +68,10 @@ Individual art page
 {breadcrumbs}   {view raw md}
 <hr>
 
-MD rendered as HTML
+MD rendered as HTML (description, background if necessary)
+can be completely custom html as pandoc should convert mixed md/html files to html
 
-description if necessary
-player if audio
+player if audio or video
 
 ---
 
@@ -93,7 +94,7 @@ More -> { text posts page }
 Text posts page
 
 Date
-*TITLE*     github description      n loc
+*TITLE*     description      word count
 
 ...
 
@@ -101,6 +102,7 @@ Date
 
 Individual text post page
 {breadcrumbs}   {view raw md}
+<hr>
 
 MD rendered as HTML
 ---
