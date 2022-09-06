@@ -90,6 +90,15 @@ Date
 More -> { text posts page }
 
 -
+Text posts page
+
+Date
+*TITLE*     github description      n loc
+
+...
+
+-
+
 Individual text post page
 {breadcrumbs}   {view raw md}
 
