@@ -1,0 +1,99 @@
+Luke McEldowney
+{links}
+
+---
+
+Recent projects (sorted by github commit history, excluding portfolio)
+
+{ Max of 3, 0 <= x <= 3 }
+
+Date
+*TITLE*     github decsription      n loc
+
+Date
+*TITLE*     github decsription      n loc
+
+Date
+*TITLE*     github decsription      n loc
+
+More -> { projects page }
+
+-
+Projects page
+
+Date
+*TITLE*     github description      n loc
+
+...
+
+-
+Individual project page
+{breadcrumbs}   {view raw md}
+<hr>
+
+Manifest / description with use cases / pictures
+
+followed by...
+
+readme from github rendered as html
+
+---
+
+Recent art (pictures, audio, etc.)
+
+{ Max of 3, 0 <= x <= 3 }
+
+Date
+*TITLE*     description         length / size
+
+Date
+*TITLE*     description         length / size
+
+Date
+*TITLE*     description         length / size
+
+More -> { art page }
+
+-
+Art page
+
+Date
+*TITLE*     description         length / size
+
+...
+
+-
+Individual art page
+{breadcrumbs}   {view raw md}
+<hr>
+
+MD rendered as HTML
+
+description if necessary
+player if audio
+
+---
+
+Recent posts
+
+{ Max of 3, 0 <= x <= 3 }
+
+Date
+*TITLE*     description         word count
+
+Date
+*TITLE*     description         word count
+
+Date
+*TITLE*     description         word count
+
+More -> { text posts page }
+
+-
+Individual text post page
+{breadcrumbs}   {view raw md}
+
+MD rendered as HTML
+---
+
+Add same "view raw" footer to each project / art / post page
