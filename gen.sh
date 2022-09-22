@@ -114,20 +114,23 @@ art=$(ls -t ./raw/art)
 text_posts=$(ls -t ./raw/text_posts)
 
 # Generate content for each of the sub-levels of the site
-for p in $projects
-do
-	$(content_gen $p "projects")
-done
+for p in $projects; do $(content_gen $p "projects"); done
+for a in $art; do $(content_gen $a "art"); done
+for t in $text_posts; do $(content_gen $t "text_posts"); done
 
-for a in $art
-do
-	$(content_gen $a "art")
-done
-
-for t in $text_posts
-do
-	$(content_gen $t "text_posts")
-done
+# Finish wrapping the tags
+cat >> ./index.html << EOF
+    </table>
+	<hr>
+    <div class="footer">
+        <a href="https://github.com/mceld">Github</a> ·
+        <a href="mailto:mceldowneyluke@gmail.com">Mail</a> ·
+    </div>
+    </div>
+</div>
+</body>
+</html>
+EOF
 
 # Directory (projects/art/posts) - no 'view raw'
 
