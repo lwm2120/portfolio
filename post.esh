@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./syntax.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="HandheldFriendly" content="true">
+	<meta property="og:title" content="mceld">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://mceld.github.io/portfolio/">
+	<!-- <link rel="icon" type="image/x-icon" href="/favicon.png"> -->
+	<title><%=$title%></title>
+    <body>
+      <div class="posts">
+        <div class="post">
+          <a href="/" class="post-end-link">⟵ Back</a>
+          <a class="stats post-end-link" href="<% basename $file%>">View Raw</a>
+		  <hr>
+          <div class="date">
+            <%="$date"%>
+            <div class="stats">
+              <span class="stats-number">
+                <%="$words"%>
+              </span>
+              <span class="stats-unit">words</span>
+            </div>
+          </div>
+          <h1>
+            <%=$title%>
+          </h1>
+          <div class="post-text">
+            <% pandoc --quiet -t html --highlight-style monochrome "$file" %>
+          </div>
+          <a href="/" class="post-end-link">⟵ Back</a>
+          <a class="stats post-end-link" href="<% basename $file%>">View Raw</a>
+        </div>
+      </div>
+    </body>
+</html>
