@@ -7,12 +7,12 @@ title_wrapper() {
 }
 
 read_time() {
-    minu="$(eva -f 1 $1/150 | xargs)"
+    minu="$(eva -f 1 "$1"/150 | xargs)"
     echo "$minu"
 }
 
 length() {
-    cm="$(eva -f 2 $1*18*0.0222 | xargs)"
+    cm="$(eva -f 2 "$1"*18*0.0222 | xargs)"
     echo "$cm"
 }
 
@@ -24,7 +24,7 @@ link_wrapper() {
     # 5 - sub dir
     echo -ne "
     <tr>
-        <td class="table-post">
+        <td class=\"table-post\">
             <div class=\"date\">
                 $3
             </div>
@@ -32,11 +32,11 @@ link_wrapper() {
                 <span class=\"post-link\">$2</span>
             </a>
         </td>
-        <td class="table-stats">
+        <td class=\"table-stats\">
             <span class=\"stats-number\">
                 $4
             </span>
-            <span class="stats-unit">words</span>
+            <span class=\"stats-unit\">words</span>
         </td>
     </tr>
     "
@@ -44,11 +44,11 @@ link_wrapper() {
 
 header() {
 	echo -ne "
-	<div class="header">
+	<div class=\"header\">
 		<h1>Luke McEldowney</h1>
 		<hr>
 		<p></p>
-		<div class="link-line">
+		<div class=\"link-line\">
 			<a>Github</a>
 		</div>
 	</div>
@@ -63,8 +63,8 @@ content_gen() {
 
 	# Generate
 	stats=$(wc "$file")
-	words="$(echo $stats | awk '{print $2}')"
-	lines="$(echo $stats | awk '{print $1}')"
+	words="$(echo "$stats" | awk '{print $2}')"
+	#lines="$(echo "$stats" | awk '{print $1}')"
 
 	#read_time="$(read_time $words)"
 	#height="$(length $lines)"
@@ -72,7 +72,7 @@ content_gen() {
 	title=$(title_wrapper "$id")
 	echo "[~] $title"
 	date=$(date -r "$file" "+%d %M %Y")
-	link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
+	#link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
 
 	id="${id%.*}"
     mkdir -p "compiled/$2/$id"
@@ -82,8 +82,10 @@ content_gen() {
         file="$file" \
         date="$date" \
         title="$title" \
-        read_time="$read_time" \
-        height="$height" \
+		words="$words"
+
+        #read_time="$read_time" \
+        #height="$height"
 }
 
 cat > ./index.html << EOF
@@ -113,10 +115,16 @@ projects=$(ls -t ./raw/projects)
 art=$(ls -t ./raw/art)
 text_posts=$(ls -t ./raw/text_posts)
 
+# Clean
+mkdir -p compiled/projects compiled/art compiled/text_posts
+rm -rf "./compiled/projects"
+rm -rf "./compiled/art"
+rm -rf "./compiled/text_posts"
+
 # Generate content for each of the sub-levels of the site
-for p in $projects; do $(content_gen $p "projects"); done
-for a in $art; do $(content_gen $a "art"); done
-for t in $text_posts; do $(content_gen $t "text_posts"); done
+for p in $projects; do content_gen "$p" "projects"; done
+for a in $art; do content_gen "$a" "art"; done
+for t in $text_posts; do content_gen "$t" "text_posts"; done
 
 # Finish wrapping the tags
 cat >> ./index.html << EOF
