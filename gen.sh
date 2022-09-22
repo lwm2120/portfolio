@@ -58,7 +58,8 @@ header() {
 content_gen() {
 	# 1 - raw filename
 	# 2 - sub dir
-	file="./raw/$2/"$1
+	file=$1
+	subdir=$2
 	id="${file##*/}"
 
 	# Generate
@@ -71,13 +72,13 @@ content_gen() {
 
 	title=$(title_wrapper "$id")
 	echo "[~] $title"
-	date=$(date -r "$file" "+%d %M %Y")
+	date=$(date -r "$file" "+%d %b %Y")
 	#link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
 
 	id="${id%.*}"
-    mkdir -p "compiled/$2/$id"
+    mkdir -p "compiled/$subdir/$id"
     esh  \
-        -o "compiled/$2/$id/index.html" \
+        -o "compiled/$subdir/$id/index.html" \
         "./post.esh" \
         file="$file" \
         date="$date" \
@@ -86,6 +87,13 @@ content_gen() {
 
         #read_time="$read_time" \
         #height="$height"
+
+	# TODO copy over assets to compiled
+	# plus fix copied dirname (seems to be based on the title right now)
+	src="$(dirname $file)"
+	dest="${src//raw/compiled}"
+	rsync --exclude="*.md" "$src"/* "$dest"
+
 }
 
 cat > ./index.html << EOF
@@ -111,9 +119,13 @@ EOF
 #echo -ne "$(intro)<table>" >> ./index.html # intro
 
 # File lists ordered by most recent
-projects=$(ls -t ./raw/projects)
-art=$(ls -t ./raw/art)
-text_posts=$(ls -t ./raw/text_posts)
+
+# Dir format - ./raw/(subdir)/*/*.md
+# (subdir)/* should contain folders with md and asset files inside
+
+projects=$(ls -t ./raw/projects/*/*.md)
+art=$(ls -t ./raw/art/*/*.md)
+text_posts=$(ls -t ./raw/text_posts/*/*.md)
 
 # Clean
 mkdir -p compiled/projects compiled/art compiled/text_posts

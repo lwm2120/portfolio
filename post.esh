@@ -16,7 +16,7 @@
       <div class="posts">
         <div class="post">
           <a href="/" class="post-end-link">⟵ Back</a>
-          <a class="stats post-end-link" href="<% basename $file%>">View Raw</a>
+		  <a class="stats post-end-link" href="../../../<%=$file%>">View Raw</a>
 		  <hr>
           <div class="date">
             <%="$date"%>
@@ -33,8 +33,9 @@
           <div class="post-text">
             <% pandoc --quiet -t html --highlight-style monochrome "$file" %>
           </div>
+		  <hr>
           <a href="/" class="post-end-link">⟵ Back</a>
-          <a class="stats post-end-link" href="<% basename $file%>">View Raw</a>
+		  <a class="stats post-end-link" href="../../../<%=$file%>">View Raw</a>
         </div>
       </div>
     </body>
