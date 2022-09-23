@@ -1,5 +1,58 @@
 #!/usr/bin/bash
 
+PROJ_LIMIT=2
+PROJ_COUNT=0
+ART_LIMIT=2
+ART_COUNT=0
+TEXT_LIMIT=2
+TEXT_COUNT=0
+
+more_links() {
+    # 1 - sub page
+    cat << EOF
+    <tr><td><a href="/$1" class="post-end-link">More ⟶ </a></td></tr>
+EOF
+}
+
+recent_link() {
+    # 1 - sub page
+    cat << EOF
+    <tr><td class="recent-heading"><span class="recent-heading">Recent $1</span></td></tr>
+EOF
+}
+
+image_block() {
+    # 1 - filename
+    # 2 - title
+    # 3 - date
+    echo -ne "
+    <tr>
+        <td class="table-post">
+            <div class=\"date\">
+                $3
+            </div>
+            <a href=\"/art/$1\" class=\"post-link\">
+                <span class=\"post-link\">$2</span>
+            </a>
+        </td>
+        <td class=\"table-stats\">
+            <a href=\"/art/$1\">
+                <img src=\"/art/$1\" height=\"50px\">
+            </a>
+        </td>
+    </tr>
+    "
+}
+
+breadcrumbs() {
+    # 1 - path
+    cat << EOF
+    <a href="/" class="post-end-link">Home</a>
+    <span>/</span>
+    <a class="post-end-link">$1</a>
+EOF
+}
+
 title_wrapper() {
     # remove extension
     # snake to title case
@@ -147,7 +200,10 @@ cat >> ./index.html << EOF
 	<div class="separator"></div>
     <div class="footer">
         <a href="https://github.com/mceld">Github</a> ·
-        <a href="mailto:mceldowneyluke@gmail.com">Mail</a>
+        <a href="mailto:mceldowneyluke@gmail.com">Mail</a> ·
+		<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img class="footimgs" src="https://d33wubrfki0l68.cloudfront.net/94387e9d77fbc8b4360db81e72603ecba3df94a7/632bc/static/cc.svg">
+        </a>
     </div>
     </div>
 </div>

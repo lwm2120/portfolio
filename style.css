@@ -1,5 +1,12 @@
-/*@import url('https://rsms.me/inter/inter.css');
-@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css);*/
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto");
+}
+
+@font-face {
+  font-family: "Roboto_Mono";
+  src: local("Roboto_Mono");
+}
 
 div.hot-links {
   float: right;
@@ -18,41 +25,44 @@ div.hot-links {
   text-decoration: none;
 }
 
-::-moz-selection, ::selection {
-  color: var(--black);
-  background: var(--cyan);
+::selection {
+  color: var(--light-select-text);
+  background: var(--splash-secondary);
 }
 
 :root {
-  --cyan: #00cece;
-  --pink: #00796b;
+  --splash-primary: #00897b;
+  --splash-secondary: #00251a;
+  --light-select-text: #ffffff;
   --black: #212121;
   --light-black: #666666;
-/*  --white: #ffffff;*/
+  /*--white: #ffffff;*/
   --white: #fff8e1;
-/*  --dark-white: #eeeeee;*/
+  /*--dark-white: #eeeeee;*/
   --dark-white: #ccc5af;
+  --code-block: var(--dark-white);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --cyan: #79ffe1;
-    --pink: #ff3299;
+  	--splash-primary: #62ebff;
+	--splash-secondary: #e0f7fa;
     --black: #dedede;
     --light-black: #ccc;
     --white: #000;
     --dark-white: #323232;
+	--code-block: var(--dark-white);
   }
-  ::-moz-selection, ::selection {
+  ::selection {
     color: var(--white);
-    background: var(--cyan);
+    background: var(--splash-secondary);
   }
 }
 
-body { font-family: 'Inter', sans-serif; }
+body { font-family: 'Roboto', sans-serif; }
 @supports (font-variation-settings: normal) {
   body {
-    font-family: 'Inter var', sans-serif; 
+    font-family: 'Roboto', sans-serif; 
     font-feature-settings: 'ss01' 1, 'kern' 1, 'liga' 1, 'cv05' 1, 'tnum' 1;
   }
 }
@@ -136,20 +146,21 @@ pre:not(.sourceCode),div.sourceCode {
   margin: 1rem -1.3rem !important;
   border: 2px solid var(--dark-white);
   border-radius: 0.4rem;
+  background-color: var(--code-block);
 }
 
 pre, code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Roboto_Mono', monospace;
 }
 
 @supports (font-variation-settings: normal) {
   pre, code {
-    font-family: 'Fira Code VF', monospace;  
+    font-family: 'Roboto_Mono', monospace;  
   }
 }
 
 code {
-  color: var(--pink);
+  color: var(--splash-primary);
 }
 
 pre > code {
@@ -215,7 +226,7 @@ hr {
   border: 2px solid var(--dark-white);
   border-radius: 0.4rem;
   margin: 2rem -1.3rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .heading {
@@ -223,7 +234,7 @@ hr {
   color: var(--black);
   text-align: center;
   font-size: 6rem;
-  text-shadow: 0.25rem 0rem var(--pink), -0.25rem 0rem var(--cyan);
+  text-shadow: 0.25rem 0rem var(--splash-primary), -0.25rem 0rem var(--splash-secondary);
   line-height: 5rem;
   font-weight: 800;
   font-style: italic;
