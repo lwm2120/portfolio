@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<link rel="stylesheet" href="./style.css">
-	<link rel="stylesheet" href="./syntax.css">
+	<link rel="stylesheet" href="../../../style.css">
+	<link rel="stylesheet" href="../../../syntax.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1">
 	<meta name="theme-color" content="#ffffff">
@@ -17,7 +17,7 @@
         <div class="post">
           <a href="/" class="post-end-link">⟵ Back</a>
 		  <a class="stats post-end-link" href="../../../<%=$file%>">View Raw</a>
-		  <hr>
+		  <div class="separator"></div>
           <div class="date">
             <%="$date"%>
             <div class="stats">
@@ -33,7 +33,7 @@
           <div class="post-text">
             <% pandoc --quiet -t html --highlight-style monochrome "$file" %>
           </div>
-		  <hr>
+		  <div class="separator"></div>
           <a href="/" class="post-end-link">⟵ Back</a>
 		  <a class="stats post-end-link" href="../../../<%=$file%>">View Raw</a>
         </div>

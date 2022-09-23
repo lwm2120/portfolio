@@ -75,6 +75,8 @@ MD rendered as HTML (description, background if necessary)
 can be completely custom html as pandoc should convert mixed md/html files to html
 
 player if audio or video
+style video like img tags
+create a new kind of tag (kind of like the code block) for the audio tag
 
 ---
 

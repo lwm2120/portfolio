@@ -46,7 +46,7 @@ header() {
 	echo -ne "
 	<div class=\"header\">
 		<h1>Luke McEldowney</h1>
-		<hr>
+		<div class="separator"></div>
 		<p></p>
 		<div class=\"link-line\">
 			<a>Github</a>
@@ -71,7 +71,7 @@ content_gen() {
 	#height="$(length $lines)"
 
 	title=$(title_wrapper "$id")
-	echo "[~] $title"
+	echo "Generating HTML: $title..."
 	date=$(date -r "$file" "+%d %b %Y")
 	#link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
 
@@ -90,9 +90,10 @@ content_gen() {
 
 	# TODO copy over assets to compiled
 	# plus fix copied dirname (seems to be based on the title right now)
-	src="$(dirname $file)"
+	src="$(dirname $file)/"
 	dest="${src//raw/compiled}"
-	rsync --exclude="*.md" "$src"/* "$dest"
+
+	rsync -r --exclude="*.md" "$src" "$dest"
 
 }
 
@@ -141,7 +142,7 @@ for t in $text_posts; do content_gen "$t" "text_posts"; done
 # Finish wrapping the tags
 cat >> ./index.html << EOF
     </table>
-	<hr>
+	<div class="separator"></div>
     <div class="footer">
         <a href="https://github.com/mceld">Github</a> ·
         <a href="mailto:mceldowneyluke@gmail.com">Mail</a> ·
