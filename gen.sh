@@ -47,7 +47,9 @@ header() {
 	<div class=\"header\">
 		<h1>Luke McEldowney</h1>
 		<div class="separator"></div>
-		<p></p>
+		<p>
+			Hello
+		</p>
 		<div class=\"link-line\">
 			<a>Github</a>
 		</div>
@@ -112,9 +114,9 @@ cat > ./index.html << EOF
 <!-- <link rel="icon" type="image/x-icon" href="/favicon.png"> -->
 <title>portfolio</title>
 <body>
-	"$(header)"
 	<div class="posts">
 	<div class="post">
+	$(header)
 EOF
 
 #echo -ne "$(intro)<table>" >> ./index.html # intro
@@ -145,7 +147,7 @@ cat >> ./index.html << EOF
 	<div class="separator"></div>
     <div class="footer">
         <a href="https://github.com/mceld">Github</a> ·
-        <a href="mailto:mceldowneyluke@gmail.com">Mail</a> ·
+        <a href="mailto:mceldowneyluke@gmail.com">Mail</a>
     </div>
     </div>
 </div>
