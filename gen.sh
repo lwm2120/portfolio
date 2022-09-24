@@ -14,10 +14,10 @@ more_links() {
 EOF
 }
 
-recent_link() {
+sub_section_link() {
     # 1 - sub page
     cat << EOF
-    <tr><td class="recent-heading"><span class="recent-heading">Recent $1</span></td></tr>
+    <tr><td class="recent-heading"><span class="recent-heading">$1</span></td></tr>
 EOF
 }
 
