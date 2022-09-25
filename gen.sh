@@ -1,16 +1,12 @@
 #!/usr/bin/bash
 
-PROJ_LIMIT=2
-PROJ_COUNT=0
-ART_LIMIT=2
-ART_COUNT=0
-TEXT_LIMIT=2
-TEXT_COUNT=0
+PREVIEW_LIMIT=2
+PREVIEW_COUNT=0
 
 more_links() {
     # 1 - sub page
     cat << EOF
-    <tr><td><a href="/$1" class="post-end-link">More ⟶ </a></td></tr>
+    <tr><td><a href="/$1" class="post-end-link more-link">More ⟶ </a></td></tr>
 EOF
 }
 
@@ -100,12 +96,6 @@ header() {
 	<div class=\"header\">
 		<h1>Luke McEldowney</h1>
 		<div class="separator"></div>
-		<p>
-			Hello
-		</p>
-		<div class=\"link-line\">
-			<a>Github</a>
-		</div>
 	</div>
 	"
 }
@@ -113,6 +103,7 @@ header() {
 content_gen() {
 	# 1 - raw filename
 	# 2 - sub dir
+
 	file=$1
 	subdir=$2
 	id="${file##*/}"
@@ -128,9 +119,14 @@ content_gen() {
 	title=$(title_wrapper "$id")
 	echo "Generating HTML: $title..."
 	date=$(date -r "$file" "+%d %b %Y")
-	#link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
+	link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
 
-	id="${id%.*}"
+	if [[ $PREVIEW_COUNT -lt $PREVIEW_LIMIT ]]; then
+		echo -ne "$link" >> ./index.html
+	fi
+	((PREVIEW_COUNT+=1))
+	
+	id="${id%.*}" # art/jone => subdir=art, id=jone
     mkdir -p "compiled/$subdir/$id"
     esh  \
         -o "compiled/$subdir/$id/index.html" \
@@ -170,6 +166,7 @@ cat > ./index.html << EOF
 	<div class="posts">
 	<div class="post">
 	$(header)
+    <table>
 EOF
 
 #echo -ne "$(intro)<table>" >> ./index.html # intro
@@ -181,18 +178,66 @@ EOF
 
 projects=$(ls -t ./raw/projects/*/*.md)
 art=$(ls -t ./raw/art/*/*.md)
-text_posts=$(ls -t ./raw/text_posts/*/*.md)
+posts=$(ls -t ./raw/posts/*/*.md)
 
 # Clean
-mkdir -p compiled/projects compiled/art compiled/text_posts
 rm -rf "./compiled/projects"
 rm -rf "./compiled/art"
-rm -rf "./compiled/text_posts"
+rm -rf "./compiled/posts"
+mkdir -p compiled/projects compiled/art compiled/posts
+
+
+for p in Projects Art Posts; do
+    cat > ./compiled/${p,,}/index.html << EOF
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<link rel="stylesheet" href="./style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="HandheldFriendly" content="true">
+	<meta property="og:title" content="mceld">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://mceld.github.io/portfolio/">
+	<!-- <link rel="icon" type="image/x-icon" href="/favicon.png"> -->
+	<title>$p</title>
+    <body>
+        <div class="posts">
+        <div class="post">
+        $(breadcrumbs $p)
+EOF
+done
 
 # Generate content for each of the sub-levels of the site
+echo -ne $(sub_section_link "Projects") >> ./index.html
+echo -ne "
+    <h1>Projects</h1>
+    <div class=\"separator\"></div>
+    <table>
+    " >> ./compiled/projects/index.html
 for p in $projects; do content_gen "$p" "projects"; done
+PREVIEW_COUNT=0
+echo -ne $(more_links "projects") >> ./index.html
+
+echo -ne $(sub_section_link "Art") >> ./index.html
+echo -ne "
+    <h1>Art</h1>
+    <div class=\"separator\"></div>
+    <table>
+    " >> ./compiled/art/index.html
 for a in $art; do content_gen "$a" "art"; done
-for t in $text_posts; do content_gen "$t" "text_posts"; done
+PREVIEW_COUNT=0
+echo -ne $(more_links "art") >> ./index.html
+
+echo -ne $(sub_section_link "Posts") >> ./index.html
+echo -ne "
+    <h1>Posts</h1>
+    <div class=\"separator\"></div>
+    <table>
+    " >> ./compiled/posts/index.html
+for t in $posts; do content_gen "$t" "posts"; done
+echo -ne $(more_links "posts") >> ./index.html
 
 # Finish wrapping the tags
 cat >> ./index.html << EOF

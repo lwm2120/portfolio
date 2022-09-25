@@ -302,3 +302,11 @@ ul {
   cursor: pointer;
   box-shadow: none;
 }
+
+.recent-heading {
+/*	text-transform: uppercase;*/
+}
+
+.more-link {
+	margin-bottom: 1rem !important;
+}
