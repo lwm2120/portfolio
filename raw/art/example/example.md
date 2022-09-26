@@ -16,6 +16,6 @@ unless
 ```
 
 <audio controls>
-  <source src="/raw/art/example/saul.mp3" type="audio/mpeg">
+  <source src="raw/art/example/saul.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio>
