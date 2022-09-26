@@ -6,7 +6,7 @@ PREVIEW_COUNT=0
 more_links() {
     # 1 - sub page
     cat << EOF
-    <tr><td><a href="/$1" class="post-end-link more-link">More ⟶ </a></td></tr>
+    <tr><td><a href="./compiled/$1/index.html" class="post-end-link more-link">More ⟶ </a></td></tr>
 EOF
 }
 
@@ -77,7 +77,7 @@ link_wrapper() {
             <div class=\"date\">
                 $3
             </div>
-            <a href=\"/compiled/$5/$1\" class=\"post-link\">
+            <a href=\"./compiled/$5/$1/index.html\" class=\"post-link\">
                 <span class=\"post-link\">$2</span>
             </a>
         </td>
@@ -117,7 +117,7 @@ content_gen() {
 	#height="$(length $lines)"
 
 	title=$(title_wrapper "$id")
-	echo "Generating HTML: $title..."
+	echo "[+] $subdir/$title"
 	date=$(date -r "$file" "+%d %b %Y")
 	link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
 
