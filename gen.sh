@@ -135,7 +135,9 @@ content_gen() {
         file="$file" \
         date="$date" \
         title="$title" \
-		words="$words"
+		words="$words" \
+		subdir="${subdir^}" \
+		subdir_link="$subdir"
         #read_time="$read_time" \
         #height="$height"
 

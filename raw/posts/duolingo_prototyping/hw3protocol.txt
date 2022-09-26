@@ -1,0 +1,19 @@
+General rules: Several sections of this app require you to write something using EpicPen, after each of these sections, please clear the screen with the clear button.  Since there is no way to detect your writing , the app will show you what a wrong answer looks like even if you got it completely right.  Feel free to test the limits and go off course and interact with anything on the screen, but try to complete each task. I dont expect you to know anything about either of the example languages.
+
+Tracing:
+
+Logograph: Trace over the word, hit check when finished.
+
+Alphabet: Trace over each letter, hitting check when finished.
+
+Freehand:
+
+Logograph: Use hints whenever possible, revealing more strokes each time.  The word is the same as the tracing exercise, but you will not be penalized by getting this wrong.
+
+Alphabet:
+Write the word using epic pen, use hints whenever possible, once you finished writing each letter, click on the letter to move to the next one and place it on the line.  Once you've run out of hints, make any mark on the screen (or no mark) with epic pen and click check, then hit continue, it should show how the completed word looks.
+
+Component practice:
+Recall: Feel free to use trial and error to find the right answer
+
+Matching: Characters have words underneath, radicals do not, use trial and error to match the pairs.
