@@ -1,9 +1,9 @@
 #### Contents
 
-1. [Design Problem Analysis](#design-problem-analysis)
-2. [Lo-fi Prototype and Evaluation](#lo-fi-prototype-and-evaluation)
-3. [Hi-fi Prototype](#hi-fi-prototype)
-4. [Hi-fi Prototype Evaluation](#hi-fi-prototype-evaluation)
+1. [Design Problem Analysis](./compiled/posts/duolingo_prototyping/index.html#design-problem-analysis)
+2. [Lo-fi Prototype and Evaluation](./compiled/posts/duolingo_prototyping/index.html#lo-fi-prototype-and-evaluation)
+3. [Hi-fi Prototype](./compiled/posts/duolingo_prototyping/index.html#hi-fi-prototype)
+4. [Hi-fi Prototype Evaluation](./compiled/posts/duolingo_prototyping/index.html#hi-fi-prototype-evaluation)
 
 ---
 
@@ -15,11 +15,11 @@ Duolingo continues to accrue users through memetic marketing and the widespread 
 
 This promise is largely fulfilled through Duolingo's rapid flashcard-like instruction that introduces users to new concepts quickly (by way of an efficient interface and recognition tests) and drills them on previously acquired skills in order to reinforce mastery.
 
-![Two examples of recognition-oriented teaching in Duolingo](raw/posts/duolingo_prototyping/recognition.png)
+![Two examples of recognition-oriented teaching in Duolingo](./raw/posts/duolingo_prototyping/recognition.png)
 
 More difficult lessons introduce recall-based systems where users are ask to construct translations from memory (when keyboarding is supported) or from a word bank (when viewport size disallows keyboard use) that converts the testing paradigm to modified recognition.
 
-![A desktop example of recall-oriented teaching in Duolingo. The "make easier" button converts the keyboard to the word bank shown on the right side of the previous image.](raw/posts/duolingo_prototyping/recall.png)
+![A desktop example of recall-oriented teaching in Duolingo. The "make easier" button converts the keyboard to the word bank shown on the right side of the previous image.](./raw/posts/duolingo_prototyping/recall.png)
 
 While both of these methods of teaching, as well as a new conversational interface that allows for speaking practice, serve the acquisition of new languages for speaking purposes with their audio-text pairings, persistent friction can occur among those who wish to learn a language with a writing system far different from their own or solely within a writing context.
 
@@ -27,7 +27,7 @@ While both of these methods of teaching, as well as a new conversational interfa
 
 While Duolingo does formally introduce and explain changes in speaking paradigms (such as tone) across languages, no attention is deliberately called to the features or elements that define the written form of each language. Restricting the capability of personally constructing new symbols within lessons disallows storage of the defining features of written language, which powers all Duolingo lessons. This shortcoming is particularly relevant in learning Chinese (or other logographic languages), a language which constructs words from radicals that carry indications of both meaning and pronunciation.
 
-![A beginner Korean lesson that asks the user to rotely memorize novel symbols (interacting with a tile produces the sound associated with the symbol).](raw/posts/duolingo_prototyping/korean.png)
+![A beginner Korean lesson that asks the user to rotely memorize novel symbols (interacting with a tile produces the sound associated with the symbol).](./raw/posts/duolingo_prototyping/korean.png)
 
 Such a shortcoming causes increased difficulty in the early stages of learning (as trial and error must be exercised often) and may lead to a false conception of a language's structure (which can inhibit acceleration of the learning process), especially among users that occupy one or more of the following categories:
 
@@ -93,7 +93,7 @@ Lastly, "tooltips" that introduce and explain to the user how to use their devic
 
 [Figma](https://www.figma.com/proto/z3bBkXsbt0P6hncqawHWCK/hw2?node-id=72%3A46&scaling=scale-down)
 
-[Diagram and overview of features](raw/posts/duolingo_prototyping/diagram.pdf)
+[Diagram and overview of features](./raw/posts/duolingo_prototyping/diagram.pdf)
 
 ### Participants and Materials
 

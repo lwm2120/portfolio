@@ -114,7 +114,9 @@ h4, h5, h6 {
 }
 
 figcaption {
-  text-align: center;
+  text-align: left;
+  opacity: .85;
+  font-size: .8rem;
 }
 
 table {
