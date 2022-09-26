@@ -36,10 +36,10 @@ div.hot-links {
   --light-select-text: #ffffff;
   --black: #212121;
   --light-black: #666666;
-  /*--white: #ffffff;*/
-  --white: #fff8e1;
-  /*--dark-white: #eeeeee;*/
-  --dark-white: #ccc5af;
+  --white: #ffffff;
+  /*--white: #fff8e1;*/
+  --dark-white: #eeeeee;
+  /*--dark-white: #ccc5af;*/
   --code-block: var(--dark-white);
 }
 

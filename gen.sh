@@ -27,13 +27,13 @@ image_block() {
             <div class=\"date\">
                 $3
             </div>
-            <a href=\"/art/$1\" class=\"post-link\">
+            <a href=\"./compiled/art/$1\" class=\"post-link\">
                 <span class=\"post-link\">$2</span>
             </a>
         </td>
         <td class=\"table-stats\">
-            <a href=\"/art/$1\">
-                <img src=\"/art/$1\" height=\"50px\">
+            <a href=\"./compiled/art/$1\">
+                <img src=\"./compiled/art/$1\" height=\"50px\">
             </a>
         </td>
     </tr>
@@ -43,7 +43,7 @@ image_block() {
 breadcrumbs() {
     # 1 - path
     cat << EOF
-    <a href="/" class="post-end-link">Home</a>
+    <a href="./" class="post-end-link">Home</a>
     <span>/</span>
     <a class="post-end-link">$1</a>
 EOF
@@ -112,20 +112,21 @@ content_gen() {
 	stats=$(wc "$file")
 	words="$(echo "$stats" | awk '{print $2}')"
 	#lines="$(echo "$stats" | awk '{print $1}')"
-
 	#read_time="$(read_time $words)"
 	#height="$(length $lines)"
-
 	title=$(title_wrapper "$id")
-	echo "[+] $subdir/$title"
 	date=$(date -r "$file" "+%d %b %Y")
 	link=$(link_wrapper "${id%.*}" "$title" "$date" "$words" "$2")
 
+	echo "[+] $subdir/$title"
+
+	# Previews
 	if [[ $PREVIEW_COUNT -lt $PREVIEW_LIMIT ]]; then
 		echo -ne "$link" >> ./index.html
 	fi
 	((PREVIEW_COUNT+=1))
 	
+	# Projects / art / posts generator
 	id="${id%.*}" # art/jone => subdir=art, id=jone
     mkdir -p "compiled/$subdir/$id"
     esh  \
@@ -135,16 +136,17 @@ content_gen() {
         date="$date" \
         title="$title" \
 		words="$words"
-
         #read_time="$read_time" \
         #height="$height"
 
-	# TODO copy over assets to compiled
-	# plus fix copied dirname (seems to be based on the title right now)
+	# Assets
 	src="$(dirname $file)/"
 	dest="${src//raw/compiled}"
 
 	rsync -r --exclude="*.md" "$src" "$dest"
+
+	# Generate the 'directory' page
+	echo -ne "$link" >> ./compiled/"$subdir"/index.html
 
 }
 
@@ -152,6 +154,7 @@ cat > ./index.html << EOF
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://mceld.github.io/portfolio/" />
 <link rel="stylesheet" href="./style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1">
@@ -160,7 +163,7 @@ cat > ./index.html << EOF
 <meta property="og:title" content="mceld">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mceld.github.io/portfolio/">
-<!-- <link rel="icon" type="image/x-icon" href="/favicon.png"> -->
+<!-- <link rel="icon" type="image/x-icon" href="./favicon.png"> -->
 <title>portfolio</title>
 <body>
 	<div class="posts">
@@ -188,24 +191,13 @@ mkdir -p compiled/projects compiled/art compiled/posts
 
 
 for p in Projects Art Posts; do
-    cat > ./compiled/${p,,}/index.html << EOF
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	<link rel="stylesheet" href="./style.css">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1">
-	<meta name="theme-color" content="#ffffff">
-	<meta name="HandheldFriendly" content="true">
-	<meta property="og:title" content="mceld">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://mceld.github.io/portfolio/">
-	<!-- <link rel="icon" type="image/x-icon" href="/favicon.png"> -->
-	<title>$p</title>
-    <body>
-        <div class="posts">
-        <div class="post">
-        $(breadcrumbs $p)
+    esh  \
+        -o "./compiled/${p,,}/index.html" \
+        "./dir.esh" \
+        title="$p" \
+
+    cat >> ./compiled/${p,,}/index.html << EOF
+	$(breadcrumbs $p)
 EOF
 done
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="https://mceld.github.io/portfolio/" />
+<link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="HandheldFriendly" content="true">
+<meta property="og:title" content="mceld">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mceld.github.io/portfolio/">
+<!-- <link rel="icon" type="image/x-icon" href="/favicon.png"> -->
+<title><%=$title%></title>
+<body>
+    <div class="posts">
+    <div class="post">
