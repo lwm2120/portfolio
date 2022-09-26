@@ -140,10 +140,9 @@ content_gen() {
         #height="$height"
 
 	# Assets
-	src="$(dirname $file)/"
-	dest="${src//raw/compiled}"
-
-	rsync -r --exclude="*.md" "$src" "$dest"
+	#src="$(dirname $file)/"
+	#dest="${src//raw/compiled}"
+	#rsync -r --exclude="*.md" "$src" "$dest"
 
 	# Generate the 'directory' page
 	echo -ne "$link" >> ./compiled/"$subdir"/index.html
