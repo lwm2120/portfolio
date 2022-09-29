@@ -110,6 +110,13 @@ content_gen() {
 
 	# Generate
 	stats=$(wc "$file")
+
+	# add control statement that changes words to something else
+	# if art of project page words=->stat=
+	# art - None?
+	# project - loc? Use local file with list to obscure real directory names
+	#	for calculating stats
+
 	words="$(echo "$stats" | awk '{print $2}')"
 	#lines="$(echo "$stats" | awk '{print $1}')"
 	#read_time="$(read_time $words)"
