@@ -245,7 +245,6 @@ cat >> ./index.html << EOF
 	<div class="separator"></div>
     <div class="footer">
         <a href="https://github.com/mceld">Github</a> ·
-        <a href="mailto:mceldowneyluke@gmail.com">Mail</a> ·
 		<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
             <img class="footimgs" src="https://d33wubrfki0l68.cloudfront.net/94387e9d77fbc8b4360db81e72603ecba3df94a7/632bc/static/cc.svg">
         </a>
